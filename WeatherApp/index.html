@@ -44,11 +44,12 @@
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     var data = JSON.parse(xhr.responseText);
+                    var cloudiness = data.clouds.all;
                     var weatherInfo = "<p>Temperature: " + data.main.temp + "°C</p>";
                     weatherInfo += "<p>Humidity: " + data.main.humidity + "%</p>";
                     weatherInfo += "<p>Wind Speed: " + data.wind.speed + " m/s</p>";
                     weatherInfo += "<p>Description: " + data.weather[0].description + "</p>";
-
+                    weatherInfo += "<p>Cloud Cover: " + cloudiness + "%</p>";
                     document.getElementById("weatherInfo").innerHTML = weatherInfo;
                     document.getElementById("cityName").textContent = city; // Update city name
                 } else {
